@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Auth from './pages/auth';
 import Chat from './pages/chat';
 import Profile from './pages/profile/profile';
