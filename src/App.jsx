@@ -1,5 +1,4 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Auth from './pages/auth';
 import Chat from './pages/chat';
 import Profile from './pages/profile/profile';
 import Login from './pages/auth/Login';
@@ -13,7 +12,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/chat' element={<Chat />} />
         <Route path='/profile' element={<Profile />} />
-        <Route path='*' element={<Navigate to='/auth' />} />
+        <Route path='*' element={<Navigate to='/login' />} />
       </Routes>
     </BrowserRouter>
   );
