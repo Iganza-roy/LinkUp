@@ -65,5 +65,3 @@ Security and process notes:
 Note: See project files in the repository for context and file contents; you may not need to re-open files unless you want to provide them to an AI tool.
 
 ---
-
-Additional development notes and contribution guidelines can be added below as the project grows.
