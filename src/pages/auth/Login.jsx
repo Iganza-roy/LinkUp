@@ -55,7 +55,7 @@ const Login = () => {
 
           <button
             type='button'
-            className='flex items-center justify-center gap-2 border border-slate-500 rounded-lg w-[220px] md:w-full h-10 px-3 hover:border-blue'
+            className='flex items-center justify-center gap-2 border border-slate-500 rounded-lg w-[220px] md:w-full h-10 px-3 hover:border-[#2563EB]'
           >
             <FcGoogle className='text-2xl' />
             <span className='text-md hidden md:block'>Google</span>
