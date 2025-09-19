@@ -39,11 +39,11 @@ const Login = () => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center md:justify-start min-h-screen pt-7'>
+    <div className='flex flex-col gap-y-2 items-center justify-center md:justify-start min-h-screen pt-7'>
       <img
         src={logo}
         alt='logo'
-        className='w-[140px] block mb-2 cursor-pointer hover:scale-105 transition-all duration-300'
+        className='w-[140px] cursor-pointer hover:scale-105 transition-all duration-300'
       />
 
       <div className='bg-[#0D0C36] rounded-md px-8 py-8 w-full max-w-[420px] flex flex-col items-center'>
