@@ -1,96 +1,109 @@
 import { FcGoogle } from 'react-icons/fc';
 import logo from '../../assets/logo1.png';
 import { useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import { toast } from 'sonner';
 
 const Register = () => {
-  const [inputs, setInputValue] = useState({
+  const [inputs, setInputs] = useState({
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
+    confirmPassword: '',
   });
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmVisible, setConfirmVisible] = useState(false);
   const [err, setErr] = useState(null);
 
   const navigate = useNavigate();
+  // const { register } = useContext(AuthContext);
 
-  //   const { login } = useContext(AuthContext);
+  const togglePassword = () => setPasswordVisible((s) => !s);
+  const toggleConfirm = () => setConfirmVisible((s) => !s);
 
-  const togglePassword = () => {
-    setPasswordVisible(!passwordVisible);
-  };
-
-  const handleChange = (e) => {
-    setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const handleChange = (e) =>
+    setInputs((p) => ({ ...p, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
+    setErr(null);
+
+    if (inputs.password !== inputs.confirmPassword) {
+      setErr('Passwords do not match');
+      return;
+    }
 
     try {
-      await login(inputs);
-      toast.success('Logged in Successfully');
-      navigate('/');
-    } catch (err) {
-      setErr('Invalid Email or Password', err);
+      // await register({ firstName: inputs.firstName, lastName: inputs.lastName, email: inputs.email, password: inputs.password });
+      toast.success('Registered successfully');
+      navigate('/login');
+    } catch (error) {
+      setErr('Registration failed');
     }
   };
 
+  const confirmMismatch =
+    inputs.confirmPassword.length > 0 &&
+    inputs.password !== inputs.confirmPassword;
+
   return (
-    <div className='flex flex-col gap-y-2 items-center justify-center md:justify-start min-h-screen pt-7'>
+    <div className='flex flex-col items-center justify-start min-h-screen pt-8'>
       <img
         src={logo}
         alt='logo'
-        className='w-[140px] cursor-pointer hover:scale-105 transition-all duration-300'
+        className='w-[140px] block mb-3 cursor-pointer hover:scale-105 transition-all duration-300'
+        onClick={() => navigate('/')}
       />
 
-      <div className='bg-[#0D0C36] rounded-md px-8 py-8 w-full max-w-[420px] flex flex-col items-center'>
-        <div className='flex flex-col justify-center items-center gap-3 w-full'>
-          <div className='text-center'>
-            <h1 className='text-lg font-medium'>Welcome to Linkup</h1>
-            <h1 className='text-lg font-medium'>Register</h1>
-          </div>
-
-          <button
-            type='button'
-            className='flex items-center justify-center gap-2 border border-slate-500 rounded-lg w-[220px] md:w-full h-10 px-3 hover:border-blue'
-          >
-            <FcGoogle className='text-2xl' />
-            <span className='text-md hidden md:block'>Google</span>
-          </button>
-
-          <div className='flex items-center justify-center w-full py-2 mb-6'>
-            <span className='h-[1px] flex-1 bg-slate-400'></span>
-            <p className='text-center font-light text-sm text-slate-400 px-4 whitespace-nowrap'>
-              Or Login Using
-            </p>
-            <span className='h-[1px] flex-1 bg-slate-400'></span>
-          </div>
+      <div className='bg-[#0D0C36] rounded-[14px] px-8 py-7 w-full max-w-[420px] -mt-2 flex flex-col gap-2 items-center'>
+        <div className='text-center mb-4 w-full'>
+          <h2 className='text-lg font-medium'>Welcome to Linkup!</h2>
+          <h3 className='text-lg font-medium mt-1'>Register</h3>
         </div>
 
         <form
           className='flex flex-col justify-center items-center gap-4 w-full'
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
         >
+          <div className='flex gap-3 mb-3'>
+            <input
+              name='firstName'
+              value={inputs.firstName}
+              onChange={handleChange}
+              placeholder='First Name'
+              className='p-2 rounded-sm bg-slate-50 text-slate-800 w-1/2'
+              required
+            />
+            <input
+              name='lastName'
+              value={inputs.lastName}
+              onChange={handleChange}
+              placeholder='Last Name'
+              className='p-2 rounded-sm bg-slate-50 text-slate-800 w-1/2'
+              required
+            />
+          </div>
+
           <input
-            required
-            type='text'
-            placeholder='Email'
             name='email'
+            value={inputs.email}
             onChange={handleChange}
-            className='p-2 rounded-sm bg-slate-50 text-slate-800 w-full'
+            placeholder='Email'
+            className='p-2 rounded-sm bg-slate-50 text-slate-800 w-full mb-3'
+            required
           />
 
-          <div className='flex items-center bg-slate-50 rounded-sm w-full py-2 px-3'>
+          <div className='flex items-center bg-slate-50 rounded-sm w-full py-2 px-3 mb-3'>
             <input
-              required
+              name='password'
+              value={inputs.password}
+              onChange={handleChange}
               type={passwordVisible ? 'text' : 'password'}
               placeholder='Password'
-              name='password'
-              onChange={handleChange}
               className='text-slate-800 border-none outline-0 w-full'
+              required
             />
             {passwordVisible ? (
               <IoMdEye
@@ -104,35 +117,69 @@ const Register = () => {
               />
             )}
           </div>
-        </form>
 
-        <div className='flex flex-col gap-3 justify-center items-center w-full mt-4'>
-          <p
-            onClick={() => navigate('/password-reset')}
-            className='hover:underline text-sm font-light hover:text-blue cursor-pointer'
-          >
-            Forgot password?
-          </p>
+          <div className='flex items-center bg-slate-50 rounded-sm w-full py-2 px-3'>
+            <input
+              name='confirmPassword'
+              value={inputs.confirmPassword}
+              onChange={handleChange}
+              type={confirmVisible ? 'text' : 'password'}
+              placeholder='Confirm Password'
+              className='text-slate-800 border-none outline-0 w-full'
+              required
+            />
+            {confirmVisible ? (
+              <IoMdEye
+                className='text-black text-2xl cursor-pointer'
+                onClick={toggleConfirm}
+              />
+            ) : (
+              <IoMdEyeOff
+                className='text-[#2563EB] text-2xl cursor-pointer'
+                onClick={toggleConfirm}
+              />
+            )}
+          </div>
+
+          {confirmMismatch && (
+            <p className='text-red-500 text-sm mt-2'>Passwords do not match</p>
+          )}
 
           <button
-            onClick={handleSubmit}
+            type='submit'
             className='bg-[#2563EB] p-2 w-[160px] rounded-sm transition-all duration-300 hover:scale-105'
           >
-            Sign In
+            Sign up
           </button>
 
-          {err && <p className='text-red-500'>{err}</p>}
+          {err && <p className='text-red-500 mt-2 text-sm'>{err}</p>}
+        </form>
 
-          <p
-            className='text-sm cursor-pointer text-left'
+        <div className='w-full flex items-center gap-3'>
+          <span className='h-[1px] flex-1 bg-slate-400' />
+          <p className='text-center font-light text-sm text-slate-400 px-4 whitespace-nowrap'>
+            Or continue with
+          </p>
+          <span className='h-[1px] flex-1 bg-slate-400' />
+        </div>
+
+        <button
+          type='button'
+          className='flex items-center justify-center gap-2 border border-slate-500 rounded-lg w-[220px] md:w-full h-10 px-3 hover:border-[#2563EB]'
+        >
+          <FcGoogle className='text-2xl' />
+          <span className='text-sm'>Google</span>
+        </button>
+
+        <p className='text-sm text-left w-full mt-5'>
+          Already have an account?{' '}
+          <span
+            className='text-[#2563EB] cursor-pointer'
             onClick={() => navigate('/login')}
           >
-            {`Don't Have An Account? `}
-            <a href='/register' className='text-[#2563EB] ml-2 hover:text-pink'>
-              Create One
-            </a>
-          </p>
-        </div>
+            Sign In
+          </span>
+        </p>
       </div>
     </div>
   );
