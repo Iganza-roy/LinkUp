@@ -174,7 +174,7 @@ const Register = () => {
         <p className='text-sm text-left w-full mt-5'>
           Already have an account?{' '}
           <span
-            className='text-[#2563EB] cursor-pointer'
+            className='text-[#2563EB] cursor-pointer hover:font-bold transition duration-300'
             onClick={() => navigate('/login')}
           >
             Sign In
