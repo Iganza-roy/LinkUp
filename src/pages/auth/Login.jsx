@@ -128,7 +128,10 @@ const Login = () => {
             onClick={() => navigate('/login')}
           >
             {`Don't Have An Account? `}
-            <a href='/register' className='text-[#2563EB] ml-2 hover:text-pink'>
+            <a
+              href='/register'
+              className='text-[#2563EB] ml-2 hover:font-bold transition duration-300'
+            >
               Create One
             </a>
           </p>
