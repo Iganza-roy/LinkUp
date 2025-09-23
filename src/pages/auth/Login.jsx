@@ -46,7 +46,7 @@ const Login = () => {
         className='w-[140px] cursor-pointer hover:scale-105 transition-all duration-300'
       />
 
-      <div className='bg-[#0D0C36] rounded-md px-8 py-8 w-full max-w-[420px] flex flex-col items-center'>
+      <div className='md:bg-[#0D0C36] rounded-md px-8 py-8 w-full max-w-[420px] flex flex-col items-center'>
         <div className='flex flex-col justify-center items-center gap-3 w-full'>
           <div className='text-center'>
             <h1 className='text-lg font-medium'>Welcome!</h1>

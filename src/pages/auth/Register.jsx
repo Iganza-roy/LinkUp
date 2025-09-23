@@ -49,7 +49,7 @@ const Register = () => {
     inputs.password !== inputs.confirmPassword;
 
   return (
-    <div className='flex flex-col items-center justify-start min-h-screen pt-8'>
+    <div className='flex flex-col items-center justify-center md:justify-start min-h-screen pt-8'>
       <img
         src={logo}
         alt='logo'
@@ -57,7 +57,7 @@ const Register = () => {
         onClick={() => navigate('/')}
       />
 
-      <div className='bg-[#0D0C36] rounded-[14px] px-8 py-7 w-full max-w-[420px] -mt-2 flex flex-col gap-2 items-center'>
+      <div className='md:bg-[#0D0C36] rounded-[14px] px-8 py-7 w-full max-w-[420px] -mt-2 flex flex-col gap-2 items-center'>
         <div className='text-center mb-4 w-full'>
           <h2 className='text-lg font-medium'>Welcome to Linkup!</h2>
           <h3 className='text-lg font-medium mt-1'>Register</h3>
