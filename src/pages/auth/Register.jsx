@@ -35,7 +35,7 @@ const Register = () => {
 
     try {
       await axios.post(
-        'https://mady.tech/api/v1/auth/register/client/',
+        'https://linkup-server-rzrc.onrender.com/accounts/v1/register/',
         inputs
       );
       toast.success('successfully registered');
