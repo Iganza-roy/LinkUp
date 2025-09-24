@@ -17,7 +17,6 @@ const Register = () => {
   const [err, setErr] = useState(null);
 
   const navigate = useNavigate();
-  // const { register } = useContext(AuthContext);
 
   const togglePassword = () => setPasswordVisible((s) => !s);
   const toggleConfirm = () => setConfirmVisible((s) => !s);
@@ -35,11 +34,15 @@ const Register = () => {
     }
 
     try {
-      // await register({ username: inputs.username, email: inputs.email, password: inputs.password });
-      toast.success('Registered successfully');
+      await axios.post(
+        'https://mady.tech/api/v1/auth/register/client/',
+        inputs
+      );
+      toast.success('successfully registered');
       navigate('/login');
     } catch (error) {
       setErr('Registration failed');
+      console.error('Registration error:', error);
     }
   };
 
