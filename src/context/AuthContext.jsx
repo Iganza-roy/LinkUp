@@ -11,7 +11,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (inputs) => {
     const res = await axios.post(
-      `https://mady.tech/api/v1/auth/login/client/`,
+      `https://linkup-server-rzrc.onrender.com/accounts/v1/login/`,
       inputs
     );
     console.log(res.data);

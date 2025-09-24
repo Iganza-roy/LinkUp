@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { FcGoogle } from 'react-icons/fc';
 import logo from '../../assets/logo1.png';
 import { useNavigate } from 'react-router-dom';
