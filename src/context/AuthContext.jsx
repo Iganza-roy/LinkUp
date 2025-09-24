@@ -25,7 +25,7 @@ export const AuthContextProvider = ({ children }) => {
     const refreshToken = localStorage.getItem('refreshToken');
     try {
       await axios.post(
-        `https://mady.tech/api/v1/auth/logout/`,
+        `https://linkup-server-rzrc.onrender.com/accounts/v1/logout/`,
         { refresh: refreshToken },
         {
           headers: {
