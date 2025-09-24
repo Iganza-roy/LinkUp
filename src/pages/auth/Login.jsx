@@ -2,6 +2,7 @@ import { FcGoogle } from 'react-icons/fc';
 import logo from '../../assets/logo1.png';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import { toast } from 'sonner';
 
@@ -15,7 +16,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  //   const { login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const togglePassword = () => {
     setPasswordVisible(!passwordVisible);
@@ -27,12 +28,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
+    // console.log(inputs);
 
     try {
       await login(inputs);
       toast.success('Logged in Successfully');
-      navigate('/');
+      navigate('/chat');
     } catch (err) {
       setErr('Invalid Email or Password', err);
     }

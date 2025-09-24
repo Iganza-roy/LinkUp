@@ -14,10 +14,10 @@ export const AuthContextProvider = ({ children }) => {
       `https://linkup-server-rzrc.onrender.com/accounts/v1/login/`,
       inputs
     );
-    console.log(res.data);
+    console.log(res);
     setCurrentUser(res.data.user);
-    localStorage.setItem('accessToken', res.data.tokens.access);
-    localStorage.setItem('refreshToken', res.data.tokens.refresh);
+    localStorage.setItem('accessToken', res.data.access);
+    localStorage.setItem('refreshToken', res.data.refresh);
   };
 
   const logout = async (inputs) => {

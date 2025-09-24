@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 import { FcGoogle } from 'react-icons/fc';
 import logo from '../../assets/logo1.png';
 import { useNavigate } from 'react-router-dom';
@@ -29,16 +29,21 @@ const Register = () => {
     e.preventDefault();
     setErr(null);
 
+    console.log(inputs);
+
     if (inputs.password !== inputs.confirmPassword) {
       setErr('Passwords do not match');
       return;
     }
 
+    const { confirmPassword, ...payload } = inputs;
+
     try {
       await axios.post(
         'https://linkup-server-rzrc.onrender.com/accounts/v1/register/',
-        inputs
+        payload
       );
+      console.log('successfully registered');
       toast.success('successfully registered');
       navigate('/login');
     } catch (error) {
