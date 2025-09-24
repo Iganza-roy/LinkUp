@@ -7,8 +7,7 @@ import { toast } from 'sonner';
 
 const Register = () => {
   const [inputs, setInputs] = useState({
-    firstName: '',
-    lastName: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -36,7 +35,7 @@ const Register = () => {
     }
 
     try {
-      // await register({ firstName: inputs.firstName, lastName: inputs.lastName, email: inputs.email, password: inputs.password });
+      // await register({ username: inputs.username, email: inputs.email, password: inputs.password });
       toast.success('Registered successfully');
       navigate('/login');
     } catch (error) {
@@ -67,35 +66,25 @@ const Register = () => {
           className='flex flex-col justify-center items-center gap-4 w-full'
           onSubmit={handleSubmit}
         >
-          <div className='flex gap-3 mb-3'>
-            <input
-              name='firstName'
-              value={inputs.firstName}
-              onChange={handleChange}
-              placeholder='First Name'
-              className='p-2 rounded-sm bg-slate-50 text-slate-800 w-1/2'
-              required
-            />
-            <input
-              name='lastName'
-              value={inputs.lastName}
-              onChange={handleChange}
-              placeholder='Last Name'
-              className='p-2 rounded-sm bg-slate-50 text-slate-800 w-1/2'
-              required
-            />
-          </div>
+          <input
+            name='username'
+            value={inputs.username}
+            onChange={handleChange}
+            placeholder='Username'
+            className='p-2 rounded-sm bg-slate-50 text-slate-800 w-full'
+            required
+          />
 
           <input
             name='email'
             value={inputs.email}
             onChange={handleChange}
             placeholder='Email'
-            className='p-2 rounded-sm bg-slate-50 text-slate-800 w-full mb-3'
+            className='p-2 rounded-sm bg-slate-50 text-slate-800 w-full'
             required
           />
 
-          <div className='flex items-center bg-slate-50 rounded-sm w-full py-2 px-3 mb-3'>
+          <div className='flex items-center bg-slate-50 rounded-sm w-full py-2 px-3'>
             <input
               name='password'
               value={inputs.password}
