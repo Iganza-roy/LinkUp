@@ -4,6 +4,10 @@ import Profile from './pages/profile/profile';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 
+
+const PrivateRoute = ({ children }) => {
+  const {userInfo} = 
+}
 function App() {
   return (
     <BrowserRouter>
