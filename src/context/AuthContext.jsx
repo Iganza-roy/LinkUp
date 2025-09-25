@@ -1,6 +1,8 @@
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner';
+import apiClient from '../../utils/apiClient';
+import { LOGIN_ROUTE, LOGOUT_ROUTE } from '../utils/constants';
 
 export const AuthContext = createContext();
 
@@ -10,10 +12,7 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post(
-      `https://linkup-server-rzrc.onrender.com/accounts/v1/login/`,
-      inputs
-    );
+    const res = await apiClient.post(LOGIN_ROUTE, inputs);
     console.log(res);
     setCurrentUser(res.data.user);
     localStorage.setItem('accessToken', res.data.access);
@@ -24,8 +23,8 @@ export const AuthContextProvider = ({ children }) => {
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
     try {
-      await axios.post(
-        `https://linkup-server-rzrc.onrender.com/accounts/v1/logout/`,
+      await apiClient.post(
+        LOGOUT_ROUTE,
         { refresh: refreshToken },
         {
           headers: {

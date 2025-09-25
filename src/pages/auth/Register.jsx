@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import { toast } from 'sonner';
+import apiClient from '../../utils/apiClient';
+import { REGISTER_ROUTE } from '../../utils/constants';
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -39,10 +41,7 @@ const Register = () => {
     const { confirmPassword, ...payload } = inputs;
 
     try {
-      await axios.post(
-        'https://linkup-server-rzrc.onrender.com/accounts/v1/register/',
-        payload
-      );
+      await apiClient.post(REGISTER_ROUTE, payload);
       console.log('successfully registered');
       toast.success('successfully registered');
       navigate('/login');
