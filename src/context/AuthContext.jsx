@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
-import axios from 'axios';
 import { toast } from 'sonner';
-import apiClient from '../../utils/apiClient';
+import apiClient from '../lib/apiClient';
 import { LOGIN_ROUTE, LOGOUT_ROUTE } from '../utils/constants';
 
 export const AuthContext = createContext();

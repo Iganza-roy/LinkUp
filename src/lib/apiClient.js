@@ -4,3 +4,5 @@ import { HOST } from '../utils/constants';
 const apiClient = axios.create({
   baseURL: HOST,
 });
+
+export default apiClient;

@@ -1,11 +1,10 @@
-import axios from 'axios';
 import { FcGoogle } from 'react-icons/fc';
 import logo from '../../assets/logo1.png';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import { toast } from 'sonner';
-import apiClient from '../../utils/apiClient';
+import apiClient from '../../lib/apiClient';
 import { REGISTER_ROUTE } from '../../utils/constants';
 
 const Register = () => {
