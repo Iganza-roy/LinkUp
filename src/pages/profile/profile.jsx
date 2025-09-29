@@ -116,7 +116,7 @@ const Profile = () => {
         </div>
         <div className='w-full flex justify-center '>
           <button
-            className='bg-blue-500 text-white rounded-lg px-4 py-2 w-1/3'
+            className='bg-blue-500 text-white rounded-lg px-4 py-2 w-1/3 cursor-pointer hover:bg-blue-600 duration-300'
             onClick={saveChanges}
           >
             Save Changes
