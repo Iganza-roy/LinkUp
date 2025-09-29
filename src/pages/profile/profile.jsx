@@ -20,13 +20,11 @@ const Profile = () => {
   const saveChanges = async () => {};
   return (
     <div className='flex h-screen items-center flex-col justify-center gap-6 pt-8'>
-      <div className='flex flex-col gap-6 w-[86vw] max-w-[720px] md:w-[60vw] bg-[#0D0C36]/58 rounded-lg p-6'>
-        <div>
-          <IoArrowBack
-            onClick={() => navigate(-1)}
-            className='text-3xl lg:text-4xl text-white/90 cursor-pointer'
-          />
-        </div>
+      <div className='flex flex-col gap-5 w-[86vw] max-w-[720px] md:w-[60vw] bg-[#0D0C36]/58 rounded-lg p-6'>
+        <IoArrowBack
+          onClick={() => navigate(-1)}
+          className='text-3xl lg:text-4xl text-white/90 cursor-pointer'
+        />
         <h1 className='text-center font-bold text-2xl'>Create Your Profile</h1>
         <div className='flex flex-row gap-8 justify-center items-center'>
           <div
