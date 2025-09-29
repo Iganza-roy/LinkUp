@@ -40,10 +40,11 @@ const Register = () => {
     const { confirmPassword, ...payload } = inputs;
 
     try {
-      await apiClient.post(REGISTER_ROUTE, payload);
-      console.log('successfully registered');
+      const res = await apiClient.post(REGISTER_ROUTE, payload);
       toast.success('successfully registered');
-      navigate('/login');
+      if (res.status === 201) {
+        navigate('/profile');
+      }
     } catch (error) {
       setErr('Registration failed');
       console.error('Registration error:', error);
