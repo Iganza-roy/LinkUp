@@ -28,12 +28,9 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(inputs);
 
     try {
       await login(inputs);
-      toast.success('Logged in Successfully');
-      navigate('/chat');
     } catch (err) {
       setErr('Invalid Email or Password', err);
     }

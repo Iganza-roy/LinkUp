@@ -27,15 +27,19 @@ export const AuthContextProvider = ({ children }) => {
 
       const profile = profileRes.data;
       setCurrentUser(profile);
+      console.log(profile);
       localStorage.setItem('user', JSON.stringify(profile));
 
-      if (profile.isProfileComplete) {
+      toast.success('Logged in Successfully');
+
+      if (profile.username) {
         navigate('/chat');
       } else {
         navigate('/profile');
       }
     } catch (err) {
       toast.error('Login failed', err);
+      throw err;
     }
   };
 
