@@ -3,7 +3,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { getColor } from '../../lib/utils';
+import { colors, getColor } from '../../lib/utils';
 import { FaPlus, FaTrash } from 'react-icons/fa';
 import { Input } from '@/components/ui/input';
 const Profile = () => {
@@ -101,6 +101,26 @@ const Profile = () => {
               className='rounded-lg p-3 bg-[#181754] w-full h-24 text-sm'
             />
           </div>
+        </div>
+        <h1 className='text-center'>Choose your Accent color</h1>
+        <div className='w-full flex gap-5 items-center justify-center'>
+          {colors.map((color, index) => (
+            <div
+              className={`${color} h-8 w-8 rounded-full cursor-pointer duration-300 transition-all ${
+                selectedColor === index ? 'outline-2 outline-white' : ''
+              }`}
+              key={index}
+              onClick={() => setSelectedColor(index)}
+            ></div>
+          ))}
+        </div>
+        <div className='w-full flex justify-center '>
+          <button
+            className='bg-blue-500 text-white rounded-lg px-4 py-2 w-1/3'
+            onClick={saveChanges}
+          >
+            Save Changes
+          </button>
         </div>
       </div>
     </div>
