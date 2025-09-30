@@ -10,8 +10,8 @@ const EmptyChatContainer = () => {
         height={200}
         width={200}
       />
-      <div className='text-opacity-60 text-white flex flex-col gap-5 items-center mt-10 lg:text-4xl text-3xl text-center transition-all duration-300'>
-        <h3 className='poppins-medium '>
+      <div className='text-opacity-60 font-medium text-white flex flex-col gap-5 items-center mt-10 lg:text-4xl text-3xl text-center transition-all duration-300'>
+        <h3>
           Hi! Welcome to
           <span className='text-[#2B9BFD]'> LinkUp</span>
         </h3>
