@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
@@ -16,6 +16,7 @@ const Profile = () => {
   const [image, setImage] = useState('');
   const [hovered, setHovered] = useState(false);
   const [selectedColor, setSelectedColor] = useState(0);
+  const fileInputRef = useRef(null);
 
   const getJoinedText = (iso) => {
     if (!iso) return '';
@@ -30,6 +31,15 @@ const Profile = () => {
   };
 
   const saveChanges = async () => {};
+
+  const handleFileInput = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleImageChange = async (e) => {};
+
+  const handleDeleteImage = async () => {};
+
   return (
     <div className='flex h-screen items-center flex-col justify-center gap-6 pt-8'>
       <div className='flex flex-col gap-5 w-[86vw] max-w-[720px] md:w-[60vw] bg-[#0D0C36]/58 rounded-lg p-6'>
@@ -66,7 +76,10 @@ const Profile = () => {
                 )}
               </Avatar>
               {hovered && (
-                <div className='absolute inset-0 flex items-center justify-center bg-black/50 rounded-full cursor-pointer ring-fuchsia-50'>
+                <div
+                  className='absolute inset-0 flex items-center justify-center bg-black/50 rounded-full cursor-pointer ring-fuchsia-50'
+                  onClick={image ? handleDeleteImage : handleFileInput}
+                >
                   {image ? (
                     <FaTrash className='text-3xl text-white cursor-pointer' />
                   ) : (
