@@ -36,9 +36,9 @@ const Profile = () => {
     fileInputRef.current.click();
   };
 
-  const handleImageChange = async (e) => {};
+  const handlePicChange = async (e) => {
 
-  const handleDeleteImage = async () => {};
+  const handleDeletePic = async () => {};
 
   return (
     <div className='flex h-screen items-center flex-col justify-center gap-6 pt-8'>
@@ -78,7 +78,7 @@ const Profile = () => {
               {hovered && (
                 <div
                   className='absolute inset-0 flex items-center justify-center bg-black/50 rounded-full cursor-pointer ring-fuchsia-50'
-                  onClick={image ? handleDeleteImage : handleFileInput}
+                  onClick={image ? handleDeletePic : handleFileInput}
                 >
                   {image ? (
                     <FaTrash className='text-3xl text-white cursor-pointer' />
@@ -87,6 +87,13 @@ const Profile = () => {
                   )}
                 </div>
               )}
+              <input
+                type='file'
+                ref={fileInputRef}
+                className='hidden'
+                onChange={handlePicChange}
+                name='profile_pic'
+              />
             </div>
             <div className='flex flex-row justify-center items-center gap-1'>
               <IoCalendarOutline className='text-center text-xs text-white/70' />
