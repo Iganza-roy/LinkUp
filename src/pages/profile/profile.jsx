@@ -6,6 +6,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { colors, getColor } from '../../lib/utils';
 import { FaPlus, FaTrash } from 'react-icons/fa';
 import { IoCalendarOutline } from 'react-icons/io5';
+import apiClient from '../../lib/apiClient';
+import { ADD_PROFILE_PIC_ROUTE } from '../../utils/constants';
+import { toast } from 'sonner';
 const Profile = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -37,6 +40,21 @@ const Profile = () => {
   };
 
   const handlePicChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('profile_pic', file);
+      const response = await apiClient.post(ADD_PROFILE_PIC_ROUTE, formData);
+      if (response.status === 200) {
+        setCurrentUser({
+          ...currentUser,
+          profile_pic: response.data.profile_pic,
+        });
+        toast.success('Profile picture updated successfully');
+        setImage(response.data.profile_pic);
+      }
+    }
+  };
 
   const handleDeletePic = async () => {};
 
@@ -93,6 +111,7 @@ const Profile = () => {
                 className='hidden'
                 onChange={handlePicChange}
                 name='profile_pic'
+                accept='.png ,.jpg,.jpeg, .webp, .svg'
               />
             </div>
             <div className='flex flex-row justify-center items-center gap-1'>
