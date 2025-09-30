@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import communicationAnimationData from '../assets/Communication.json';
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -17,4 +18,13 @@ export const getColor = (color) => {
     return colors[color];
   }
   return colors[0];
+};
+
+export const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: communicationAnimationData,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice',
+  },
 };
