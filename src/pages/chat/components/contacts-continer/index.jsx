@@ -4,13 +4,17 @@ const ContactsContainer = () => {
   return (
     <div className='relative md:w-[35vw] lg:w-[30vw] xl:w-[25vw] bg-[#0D0C36]/58 border-r-2 border-[#0f0e4a] w-full'>
       <div className='pt-2'>
-        <img className='md:w-[150px] w-[120px]' src={logo1} alt='logo' />
+        <img
+          className='md:w-[150px] w-[120px] hover:scale-105 transition-all cursor-pointer'
+          src={logo1}
+          alt='logo'
+        />
       </div>
       <hr className='border-[#34466E] my-3' />
       <div className='flex flex-col'>
         <div className='flex items-center justify-between px-5'>
           <h2 className='text-xl md:text-lg font-semibold'>Messages</h2>
-          <button className='bg-[#2563EB] md:text-xs rounded-lg text-lg text-white py-1 px-3 '>
+          <button className='bg-[#2563EB] md:text-xs cursor-pointer rounded-lg text-lg text-white py-1 px-3 hover:scale-105 transition-all '>
             + New Chat
           </button>
         </div>
@@ -46,9 +50,10 @@ const ContactsContainer = () => {
           </div>
           <div className='flex  gap-1 items-center cursor-pointer hover:text-[#2563EB] justify-center pr-5 transition-colors duration-200'>
             <MdOutlineGroups className='text-lg ' />
-            <Title text='Group' />
+            <Title text='Groups' />
           </div>
         </div>
+        <hr className='border-[#34466E] my-3' />
       </div>
     </div>
   );
