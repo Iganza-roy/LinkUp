@@ -1,7 +1,8 @@
 import logo1 from '../../../../assets/logo1.png';
+import { MdOutlineGroups, MdOutlinePerson } from 'react-icons/md';
 const ContactsContainer = () => {
   return (
-    <div className='relative md:w-[35vw] lg:w-[30vw] xl:w-[20vw] bg-[#0D0C36]/58 border-r-2 border-[#0f0e4a] w-full'>
+    <div className='relative md:w-[35vw] lg:w-[30vw] xl:w-[25vw] bg-[#0D0C36]/58 border-r-2 border-[#0f0e4a] w-full'>
       <div className='pt-2'>
         <img className='md:w-[150px] w-[120px]' src={logo1} alt='logo' />
       </div>
@@ -38,16 +39,14 @@ const ContactsContainer = () => {
           </div>
         </div>
 
-        <div className='flex items-center justify-between px-5 mt-4'>
-          <div className='my-5'>
-            <div className='flex items-center justify-between pr-5'>
-              <Title text='Chats' />
-            </div>
+        <div className='flex items-center justify-between px-4 mt-4'>
+          <div className='flex items-center justify-center pr-5 gap-1 cursor-pointer hover:text-[#2563EB] transition-colors duration-200'>
+            <MdOutlinePerson className='text-lg ' />
+            <Title text='Chats' className='border' />
           </div>
-          <div className='my-5'>
-            <div className='flex items-center justify-between pr-5'>
-              <Title text='Group' />
-            </div>
+          <div className='flex  gap-1 items-center cursor-pointer hover:text-[#2563EB] justify-center pr-5 transition-colors duration-200'>
+            <MdOutlineGroups className='text-lg ' />
+            <Title text='Group' />
           </div>
         </div>
       </div>
@@ -59,7 +58,7 @@ export default ContactsContainer;
 
 const Title = ({ text }) => {
   return (
-    <h6 className='uppercase tracking-widest text-neutral-400 pl-10 font-light text-opacity-90 text-sm '>
+    <h6 className='uppercase tracking-widefont-light text-opacity-90 text-sm '>
       {text}
     </h6>
   );
