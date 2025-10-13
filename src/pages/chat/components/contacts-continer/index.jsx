@@ -1,5 +1,12 @@
 import logo1 from '../../../../assets/logo1.png';
-import { MdOutlineGroups, MdOutlinePerson } from 'react-icons/md';
+import {
+  MdOutlineGroups,
+  MdOutlinePerson,
+  MdEdit,
+  MdSettings,
+} from 'react-icons/md';
+import { colors, getColor } from '../../../../lib/utils';
+
 const ContactsContainer = () => {
   return (
     <div className='relative md:w-[35vw] lg:w-[30vw] xl:w-[25vw] bg-[#0D0C36]/58 border-r-2 border-[#0f0e4a] w-full'>
@@ -54,6 +61,38 @@ const ContactsContainer = () => {
           </div>
         </div>
         <hr className='border-[#34466E] my-3' />
+      </div>
+
+      {/* logged-in user panel at bottom */}
+      <div className='absolute bottom-0 w-full'>
+        <div className='bg-[#0E1636]/60 border border-[#1b2a4d] rounded-t-xl px-3 py-3 flex items-center justify-between'>
+          <div className='flex items-center gap-3'>
+            <div
+              className={`w-12 h-12 rounded-full ${getColor()} flex items-center justify-center text-white font-bold`}
+            >
+              RI
+            </div>
+            <div>
+              <div className='text-white font-semibold'>Roy Iganza</div>
+              <div className='text-xs text-white/60'>Active now</div>
+            </div>
+          </div>
+
+          <div className='flex items-center gap-2'>
+            <button
+              className='p-2 rounded-md hover:bg-white/5 transition-colors'
+              aria-label='Edit profile'
+            >
+              <MdEdit className='text-white/80' />
+            </button>
+            <button
+              className='p-2 rounded-md hover:bg-white/5 transition-colors'
+              aria-label='Settings'
+            >
+              <MdSettings className='text-white/80' />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
