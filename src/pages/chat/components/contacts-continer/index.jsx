@@ -5,7 +5,8 @@ import {
   MdEdit,
   MdSettings,
 } from 'react-icons/md';
-import { colors, getColor } from '../../../../lib/utils';
+import { getColor } from '../../../../lib/utils';
+import { DUMMY_CHATS } from '../../../../utils/constants';
 
 const ContactsContainer = () => {
   return (
@@ -60,15 +61,43 @@ const ContactsContainer = () => {
             <Title text='Groups' />
           </div>
         </div>
-        <hr className='border-[#34466E] my-3' />
+        <hr className='border-[#34466E] mt-3' />
+
+        {/* dummy chats list */}
+        <div className='flex flex-col px-2'>
+          {DUMMY_CHATS.map((chat) => (
+            <div
+              key={chat.id}
+              className='flex items-center gap-3 px-4 py-3 hover:bg-[#0f1530] rounded-md cursor-pointer'
+            >
+              <div
+                className={`w-12 h-12 rounded-full flex items-center justify-center font-bold ${chat.colorClass}`}
+              >
+                <span className='text-sm text-white'>{chat.initials}</span>
+              </div>
+
+              <div className='flex-1'>
+                <div className='flex items-center justify-between'>
+                  <div className='text-white font-semibold'>{chat.name}</div>
+                  {chat.unread && (
+                    <div className='w-[8px] h-[8px] bg-[#2563EB] rounded-full'></div>
+                  )}
+                </div>
+                <div className='text-xs text-white/60'>{chat.lastMessage}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* logged-in user panel at bottom */}
       <div className='absolute bottom-0 w-full'>
-        <div className='bg-[#0E1636]/60 border border-[#1b2a4d] rounded-t-xl px-3 py-3 flex items-center justify-between'>
+        <div className='bg-[#162863] border border-[#1b2a4d] rounded-t-xl px-3 py-3 flex items-center justify-between'>
           <div className='flex items-center gap-3'>
             <div
-              className={`w-12 h-12 rounded-full ${getColor()} flex items-center justify-center text-white font-bold`}
+              className={`w-12 h-12 rounded-full ${getColor(
+                0
+              )} flex items-center justify-center text-white font-bold`}
             >
               RI
             </div>
