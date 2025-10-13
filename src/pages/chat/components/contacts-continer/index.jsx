@@ -64,62 +64,66 @@ const ContactsContainer = () => {
         <hr className='border-[#34466E] mt-3' />
 
         {/* dummy chats list */}
-        <div className='flex flex-col px-2'>
-          {DUMMY_CHATS.map((chat) => (
-            <div
-              key={chat.id}
-              className='flex items-center gap-3 px-4 py-3 hover:bg-[#0f1530] rounded-md cursor-pointer'
-            >
+        <div className='px-2'>
+          <div className='overflow-y-auto max-h-[calc(100vh-220px)] pr-2 pb-24 custom-scroll'>
+            {DUMMY_CHATS.map((chat) => (
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center font-bold ${chat.colorClass}`}
+                key={chat.id}
+                className='flex items-center gap-3 px-4 py-3 hover:bg-[#0f1530] rounded-md cursor-pointer'
               >
-                <span className='text-sm text-white'>{chat.initials}</span>
-              </div>
-
-              <div className='flex-1'>
-                <div className='flex items-center justify-between'>
-                  <div className='text-white font-semibold'>{chat.name}</div>
-                  {chat.unread && (
-                    <div className='w-[8px] h-[8px] bg-[#2563EB] rounded-full'></div>
-                  )}
+                <div
+                  className={`w-12 h-12 rounded-full flex items-center justify-center font-bold ${chat.colorClass}`}
+                >
+                  <span className='text-sm text-white'>{chat.initials}</span>
                 </div>
-                <div className='text-xs text-white/60'>{chat.lastMessage}</div>
+
+                <div className='flex-1'>
+                  <div className='flex items-center justify-between'>
+                    <div className='text-white font-semibold'>{chat.name}</div>
+                    {chat.unread && (
+                      <div className='w-[8px] h-[8px] bg-[#2563EB] rounded-full'></div>
+                    )}
+                  </div>
+                  <div className='text-xs text-white/60'>
+                    {chat.lastMessage}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* logged-in user panel at bottom */}
+        <div className='absolute bottom-0 w-full'>
+          <div className='bg-[#162863] border border-[#1b2a4d] rounded-t-xl px-3 py-2 flex items-center justify-between'>
+            <div className='flex items-center gap-3'>
+              <div
+                className={`w-12 h-12 rounded-full ${getColor(
+                  0
+                )} flex items-center justify-center text-white font-bold`}
+              >
+                RI
+              </div>
+              <div>
+                <div className='text-white font-semibold'>Roy Iganza</div>
+                <div className='text-xs text-white/60'>Active now</div>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* logged-in user panel at bottom */}
-      <div className='absolute bottom-0 w-full'>
-        <div className='bg-[#162863] border border-[#1b2a4d] rounded-t-xl px-3 py-3 flex items-center justify-between'>
-          <div className='flex items-center gap-3'>
-            <div
-              className={`w-12 h-12 rounded-full ${getColor(
-                0
-              )} flex items-center justify-center text-white font-bold`}
-            >
-              RI
+            <div className='flex items-center gap-2'>
+              <button
+                className='p-2 rounded-md hover:bg-white/5 transition-colors'
+                aria-label='Edit profile'
+              >
+                <MdEdit className='text-white/80' />
+              </button>
+              <button
+                className='p-2 rounded-md hover:bg-white/5 transition-colors'
+                aria-label='Settings'
+              >
+                <MdSettings className='text-white/80' />
+              </button>
             </div>
-            <div>
-              <div className='text-white font-semibold'>Roy Iganza</div>
-              <div className='text-xs text-white/60'>Active now</div>
-            </div>
-          </div>
-
-          <div className='flex items-center gap-2'>
-            <button
-              className='p-2 rounded-md hover:bg-white/5 transition-colors'
-              aria-label='Edit profile'
-            >
-              <MdEdit className='text-white/80' />
-            </button>
-            <button
-              className='p-2 rounded-md hover:bg-white/5 transition-colors'
-              aria-label='Settings'
-            >
-              <MdSettings className='text-white/80' />
-            </button>
           </div>
         </div>
       </div>
@@ -131,7 +135,7 @@ export default ContactsContainer;
 
 const Title = ({ text }) => {
   return (
-    <h6 className='uppercase tracking-widefont-light text-opacity-90 text-sm '>
+    <h6 className='uppercase tracking-wide font-light text-opacity-90 text-sm '>
       {text}
     </h6>
   );
