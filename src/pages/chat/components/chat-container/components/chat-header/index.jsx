@@ -16,7 +16,7 @@ const ChatHeader = () => {
             <div className='text-white font-semibold'>Chloe Kim</div>
           </div>
         </div>
-        <IoClose className='text-lg' />
+        <IoClose className='text-xl cursor-pointer hover:text-[#2563EB] transition-all duration-300' />
       </div>
     </div>
   );
