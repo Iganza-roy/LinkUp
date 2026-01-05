@@ -63,7 +63,6 @@ const ContactsContainer = () => {
         </div>
         <hr className='border-[#34466E] mt-3' />
 
-        {/* dummy chats list */}
         <div className='px-2'>
           <div className='overflow-y-auto max-h-[calc(100vh-220px)] pr-2 pb-24 custom-scroll'>
             {DUMMY_CHATS.map((chat) => (
@@ -93,7 +92,6 @@ const ContactsContainer = () => {
           </div>
         </div>
 
-        {/* logged-in user panel at bottom */}
         <div className='absolute bottom-0 w-full'>
           <div className='bg-[#162863] border border-[#1b2a4d] rounded-t-xl px-3 py-2 flex items-center justify-between'>
             <div className='flex items-center gap-3'>
