@@ -15,7 +15,6 @@ const Profile = () => {
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
   const [image, setImage] = useState('');
   const [hovered, setHovered] = useState(false);
   const [selectedColor, setSelectedColor] = useState(0);
