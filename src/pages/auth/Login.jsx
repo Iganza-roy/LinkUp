@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
-import { toast } from 'sonner';
 
 const Login = () => {
   const [inputs, setInputValue] = useState({
